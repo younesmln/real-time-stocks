@@ -34,6 +34,9 @@ export const counterSlice = createSlice<State, SliceCaseReducers<State>>({
     ) => {
       action.payload.forEach((newPrice) => {
         const prevPrice = entities[newPrice.sym];
+        if (!prevPrice) {
+          return;
+        }
 
         const tickerPriceUpdate =  { name: prevPrice.name, symbol: newPrice.sym, price: newPrice.p }
 

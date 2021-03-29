@@ -6,20 +6,16 @@ const UPDATES_TIMEOUT_DURATION = 1000 / 10;
 @Injectable()
 export class PolygonWSService {
   connect() {
-    let id;
-
-    function dispose() {
-      clearInterval(id);
-    }
-
     return {
       subscribe(symbols: string[], cb) {
-        id = setInterval(() => {
+        const id = setInterval(() => {
           const data = getNextRealTimeData(symbols);
           cb(data);
         }, UPDATES_TIMEOUT_DURATION);
 
-        return dispose;
+        return function dispose() {
+          clearInterval(id);
+        };
       },
     };
   }
