@@ -24,3 +24,14 @@ $ yarn test
 
 ## React client App
 The frontend part uses redux to manage the state of the react app, more precisely [redux-toolkit](https://github.com/reduxjs/redux-toolkit) is used to build the redux components
+
+## Todo 
+* Backend
+  * Share the `.env` file in a more secure way instead of adding it to git 
+  * Add testing to the api layer
+  * Handle api errors more robustly
+* Frontend
+  * Store the `page` in query string instead of redux to make the page link show the same view when shared/revisted
+  * Cache previosuly visited pages for faster navigation between pages
+  * Add more tests to the data (reducers, middlewares) layer 
+  * handle the websocket logic in a more predictable way using a library like [redux saga event channels](https://redux-saga.js.org/docs/advanced/Channels/#using-the-eventchannel-factory-to-connect-to-external-events)
